@@ -1,0 +1,3 @@
+Name,Sample,Total,gRNA,Total_indel,#1-Indel,#1-Reads(%),#2-Indel,#2-Reads(%),#3-Indel,#3-Reads(%),#4-Indel,#4-Reads(%),#5-Indel,#5-Reads(%),#6-Indel,#6-Reads(%),#7-Indel,#7-Reads(%),#8-Indel,#8-Reads(%),SNP_test,raw_wt_counter,%gRNA
+Miller-Plate01-B07-CTTCCGAATT-CACAGT_S19_L001_R1_001.fastq,,884,811 (91.7%),0.5,0,880 (99.5%),-1,3 (0.3%),-2,1 (0.1%),NA,,NA,,NA,,NA,,NA,,1.09,935 (1.2),91.7
+Miller-Plate01-B09-CCAGCTGTAC-CACAGT_S21_L001_R1_001.fastq,,955,461 (48.3%),46.3,0,513 (53.7%),-30,151 (15.8%),-45,122 (12.8%),-1,49 (5.1%),-18,14 (1.5%),-29,12 (1.3%),-27,9 (0.9%),-16,9 (0.9%),1.13,527 (1.1),48.3
