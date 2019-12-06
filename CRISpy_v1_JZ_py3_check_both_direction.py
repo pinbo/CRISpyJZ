@@ -140,7 +140,7 @@ def search_fastq(ID,ref_seq,seq_start,seq_end,fastq_files,test_list):
     save_dir = os.getcwd()+"/"+ str(ID) + "/"
     print("Working directory: {}".format(str(os.getcwd())))#save_dir
     make_project_directory(save_dir)
-    file_name = save_dir+'results_counter ' + ID + '.txt'
+    file_name = save_dir+'results_counter_' + ID + '.txt'
     f = open(file_name, "w")
     print("ref_seq.find(seq_end)+len(seq_end) - ref_seq.find(seq_start)", ref_seq.find(seq_end), ref_seq.find(seq_start))
     wt_distance = ref_seq.find(seq_end)+len(seq_end) - ref_seq.find(seq_start)      #Expected size of WT read, the distance between the two anchor points made from seq_start and seq_end
@@ -178,26 +178,30 @@ def search_fastq(ID,ref_seq,seq_start,seq_end,fastq_files,test_list):
             if (line_number - 2) % 4 != 0: # only process the sequence line in the fastq files
                 continue
             line = line.strip()
-            line = line + ReverseComplement(line) # so it will search both strand
+            line_length = len(line)
+            line = line + "NNNN" + ReverseComplement(line) # so it will search both strand
             if list(test_dict.items())[0][1] in line:           #Counts the number of times the first item in test_dict is found in ANY of the lines of the fastq file. This is a check in case SNPs are in BOTH seq_start and seq_end
                 raw_wt_counter+=1
-            if line.find(seq_start)>0 and line.find(seq_end)>0:  
+            read_start = line.find(seq_start)
+            seq_end_pos = line.find(seq_end)
+            if read_start>0 and seq_end_pos>0 and (read_start - line_length) * (seq_end_pos - line_length) > 0: # also make sure the two flanking sequences are on the same reads, not across NNNN
                 c_Counter += 1
                 start_counter +=1     #Count # of times seq_start is found
                 end_counter +=1       #Count # of times seq_end is found
-                read_start = line.find(seq_start)
-                read_end = line.find(seq_end)+len(seq_end)
-                indel_size = line.find(seq_end)+len(seq_end) - line.find(seq_start) - wt_distance
+                #read_start = line.find(seq_start)
+                read_end = seq_end_pos+len(seq_end)
+                read_seq = line[read_start:(read_end)]
+                indel_size = len(read_seq) - wt_distance
                 indel_size_list.append(indel_size)
-                line_list.append(line[read_start:(read_end)])
+                line_list.append(read_seq)
                 for item in test_dict:
                     if test_dict[item] in line:
                         dict_Counters[item] +=1
                     else:
                         pass
-            elif line.find(seq_start)>0 and line.find(seq_end)<0:        #If seq_start is found and seq_end is not found, for SNPT test
+            elif read_start>0 and seq_end_pos<0:        #If seq_start is found and seq_end is not found, for SNPT test
                 start_counter +=1
-            elif line.find(seq_end)>0 and line.find(seq_start)<0:        #If seq_end is found and seq_start is not found, for SNP test
+            elif seq_end_pos>0 and read_start<0:        #If seq_end is found and seq_start is not found, for SNP test
                 end_counter+=1
             else:
                 pass
