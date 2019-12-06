@@ -5,7 +5,7 @@ from __future__ import division
 import os
 import glob
 import sys
-import csv
+#import csv
 from collections import Counter
 from collections import OrderedDict
 
@@ -50,7 +50,7 @@ def get_parameters():
     seq_end = str.upper(sys.argv[6])
     fastq_files = '*.fastq'
     test_list = [
-               str('gRNA'),   str.upper(sys.argv[7]), 
+               str('gRNA'),   str.upper(sys.argv[7]),
                 ]
 
     return ID,ref_seq,seq_start,seq_end,fastq_files,test_list
@@ -150,7 +150,6 @@ def search_fastq(ID,ref_seq,seq_start,seq_end,fastq_files,test_list):
     f.write("Test_Sequences: \n")
     for key, value in test_dict.items():                #Go through the test_dict and write each item that is being searched for
         f.write(str(key)+": "+value+'\n')
-        print(key, value)
         dict_Counters[str(key)]=0
         
     print('Expected WT distance: {}'.format(wt_distance))     #The expected distance between  seq_start and seq_end if the DNA is WT/ REF
@@ -225,12 +224,10 @@ def search_fastq(ID,ref_seq,seq_start,seq_end,fastq_files,test_list):
         # else:
         #      pass
 
-
     print("SUMMARY")
     make_project_directory(ID)
     #print master_distance_and_count_summary
-    pd_columns = ['Name','Sample','Total', 'Total_indel', '#1-Indel','#1-Reads(%)','#2-Indel','#2-Reads(%)','#3-Indel','#3-Reads(%)','#4-Indel','#4-Reads(%)','#5-Indel','#5-Reads(%)',
-             '#6-Indel','#6-Reads(%)','#7-Indel','#7-Reads(%)','#8-Indel','#8-Reads(%)', 'SNP_test', 'raw_wt_counter']
+    pd_columns = ['Name','Sample','Total', 'Total_indel', '#1-Indel','#1-Reads(%)','#2-Indel','#2-Reads(%)','#3-Indel','#3-Reads(%)','#4-Indel','#4-Reads(%)','#5-Indel','#5-Reads(%)','#6-Indel','#6-Reads(%)','#7-Indel','#7-Reads(%)','#8-Indel','#8-Reads(%)', 'SNP_test', 'raw_wt_counter']
 
     flip_dict = list(test_dict.items())   #Need to flip order of items in dictionary.  That way when they are inserted into the excel list, the order will come out correct
     flip_dict.reverse()
