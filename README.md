@@ -17,10 +17,10 @@ Please read the original paper, [CRIS.py: A Versatile and High-throughput Analys
 ## Usage
 
 ``` sh
-python2 CRISpy_JZ_v2.py reference-file project-ID gene_name strand seq_start seq_end gRNA
+python CRISpy_JZ_v2.py reference-file project-ID gene_name strand seq_start seq_end gRNA
 
 # Example
-python2 CRISpy_JZ_v2.py ../reference-example.fasta gene1-g10 gene1 + gcggagaactg ccggcccgga GAGGCAGGCGTCGAAGAGTACGG
+python CRISpy_JZ_v2.py ../reference-example.fasta gene1-g10 gene1 + gcggagaactg ccggcccgga GAGGCAGGCGTCGAAGAGTACGG
 ```
 
 Command line parameters:

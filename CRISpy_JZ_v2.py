@@ -241,7 +241,7 @@ def search_fastq(ID,ref_seq,seq_start,seq_end,fastq_files,test_list):
 
     flip_dict = list(test_dict.items())   #Need to flip order of items in dictionary.  That way when they are inserted into the excel list, the order will come out correct
     flip_dict.reverse()
-    print("flip_dict", flip_dict)
+    #print("flip_dict", flip_dict)
     flip_dict=OrderedDict(flip_dict)
     for k in flip_dict:        #Insert the items from test_dict into position 3 for the column output, after 'Total'
         pd_columns.insert(3,k)
