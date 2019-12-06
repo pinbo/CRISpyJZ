@@ -1,3 +1,5 @@
 Name,Sample,Total,gRNA,Total_indel,#1-Indel,#1-Reads(%),#2-Indel,#2-Reads(%),#3-Indel,#3-Reads(%),#4-Indel,#4-Reads(%),#5-Indel,#5-Reads(%),#6-Indel,#6-Reads(%),#7-Indel,#7-Reads(%),#8-Indel,#8-Reads(%),SNP_test,raw_wt_counter,%gRNA
-Miller-Plate07-H09-GTTCTCCCAC-ATGTCC_S93_L001_R1_001.fastq,,1767,1749 (99.0%),0.1,0,1765 (99.9%),-1,2 (0.1%),NA,,NA,,NA,,NA,,NA,,NA,,1.00,1782 (1.0),99.0
 Miller-Plate07-H10-ATTATGACAT-ATGTCC_S94_L001_R1_001.fastq,,1963,440 (22.4%),51.9,0,944 (48.1%),-7,187 (9.5%),-2,117 (6.0%),-6,85 (4.3%),-8,84 (4.3%),-1,75 (3.8%),-5,62 (3.2%),-11,52 (2.6%),1.00,448 (1.0),22.4
+Miller-Plate07-H10-ATTATGACAT-ATGTCC_S94_L001_R2_001.fastq,,1818,401 (22.1%),51.6,0,880 (48.4%),-7,173 (9.5%),-2,95 (5.2%),-8,81 (4.5%),-6,81 (4.5%),-1,69 (3.8%),-5,59 (3.2%),-11,51 (2.8%),0.94,425 (1.1),22.1
+Miller-Plate07-H09-GTTCTCCCAC-ATGTCC_S93_L001_R1_001.fastq,,1767,1749 (99.0%),0.1,0,1765 (99.9%),-1,2 (0.1%),NA,,NA,,NA,,NA,,NA,,NA,,1.00,1782 (1.0),99.0
+Miller-Plate07-H09-GTTCTCCCAC-ATGTCC_S93_L001_R2_001.fastq,,1660,1616 (97.3%),0.1,0,1659 (99.9%),-1,1 (0.1%),NA,,NA,,NA,,NA,,NA,,NA,,0.96,1703 (1.1),97.3
