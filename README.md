@@ -39,4 +39,17 @@ Command line parameters:
 2. The left and right flanking sequences are used to find reads from your gene. For wheat, choose homeolog specific sequences around your gRNAs.
 3. Use the commands in the `commands.sh` file in the *CRISpy_example* folder to see how it works. You can also run `sh commands.sh` to run all the commands. In your work, you can prepare the commands in an Excel sheet and paste them in a .sh file and run all of them at once.
 4. You need open the terminal or `cd` to the folder with all the fastq files, then run the command, because the script searches fastq files in the working directory.
+5. I suggest using two sets of flanking sequences: one close to the gRNA for reduce sequencing error and background indels and one close to your PCR primers for detecting big deletions.
+6. You must close the .CSV file before running the script again.  CRIS.py can not edit a file that is already open in excel.
+7. Be sure to check the values in "SNP_test" (number of reads with the seq_start / number of reads with seq_end) and "raw_wt_counter" (number of reads with gRNA / number of reads with seq_start, seq_end and gRNA). Check the original paper's Supplemental file for better explanation.
+
+## Citing
+
+Please cite the original paper but also mention my contribution. Something like this:
+
+> The sequencing data was analyzed using a modified version of CRIS.py (Connelly and Pruett-Miller, 2019) by Dr. Junli Zhang (https://github.com/pinbo/CRISpyJZ).
+
+The original paper is:
+
+> Connelly J., Pruett-Miller S. CRIS.py: A Versatile and High-throughput Analysis Program for CRISPR-based Genome Editing. Scientific Reports 9, 4194 (2019)
 
