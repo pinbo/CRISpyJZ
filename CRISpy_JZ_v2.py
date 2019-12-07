@@ -39,7 +39,7 @@ def ReverseComplement(seq):
 def get_parameters():
     #Note to user- Change text inside of quote marks ('YOUR DNA SEQUENCES GO HERE') for your experiment.  Case of text does not matter.
     ref_lib = get_fasta( os.path.abspath(sys.argv[1]))
-    print(ref_lib.keys())
+    #print(ref_lib.keys())
     ID = sys.argv[2]
     ref_seq = str.upper(ref_lib[sys.argv[3]])
     if sys.argv[4] == "-":
@@ -48,9 +48,13 @@ def get_parameters():
     #print(ref_seq)
     seq_start = str.upper(sys.argv[5])
     seq_end = str.upper(sys.argv[6])
+    gRNA = str.upper(sys.argv[7])
+    print(seq_start + " seq_start is at position ", ref_seq.find(seq_start))
+    print(seq_end + " seq_end is at position ", ref_seq.find(seq_end))
+    print(gRNA + " gRNA is at position ", ref_seq.find(gRNA))
     fastq_files = '*.fastq'
     test_list = [
-               str('gRNA'),   str.upper(sys.argv[7]),
+               str('gRNA'), gRNA,
                 ]
 
     return ID,ref_seq,seq_start,seq_end,fastq_files,test_list
@@ -142,7 +146,7 @@ def search_fastq(ID,ref_seq,seq_start,seq_end,fastq_files,test_list):
     make_project_directory(save_dir)
     file_name = save_dir+'results_counter_' + ID + '.txt'
     f = open(file_name, "w")
-    print("ref_seq.find(seq_end)+len(seq_end) - ref_seq.find(seq_start)", ref_seq.find(seq_end), ref_seq.find(seq_start))
+    #print("ref_seq.find(seq_end)+len(seq_end) - ref_seq.find(seq_start)", ref_seq.find(seq_end), ref_seq.find(seq_start))
     wt_distance = ref_seq.find(seq_end)+len(seq_end) - ref_seq.find(seq_start)      #Expected size of WT read, the distance between the two anchor points made from seq_start and seq_end
     f.write(ID + '\n')
     f.write(str("seq_start: "+seq_start+'\n'))    
@@ -180,7 +184,7 @@ def search_fastq(ID,ref_seq,seq_start,seq_end,fastq_files,test_list):
             line = line.strip()
             line_length = len(line)
             line = line + "NNNN" + ReverseComplement(line) # so it will search both strand
-            if list(test_dict.items())[0][1] in line:           #Counts the number of times the first item in test_dict is found in ANY of the lines of the fastq file. This is a check in case SNPs are in BOTH seq_start and seq_end
+            if list(test_dict.items())[0][1] in line: #Counts the number of times the first item in test_dict is found in ANY of the lines of the fastq file. This is a check in case SNPs are in BOTH seq_start and seq_end
                 raw_wt_counter+=1
             read_start = line.find(seq_start)
             seq_end_pos = line.find(seq_end)
